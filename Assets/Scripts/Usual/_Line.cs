@@ -51,6 +51,8 @@ public class _Line : MonoBehaviour {
                 _LongLine[] longlines = transform.parent.gameObject.GetComponentsInChildren<_LongLine>();
                 foreach(_LongLine l in longlines)
                 {
+
+
                     bool flag = l.gameObject.GetComponent<BoxCollider2D>().enabled;
                     if (flag)
                         l.LongLineHide();
@@ -117,5 +119,7 @@ public class _Line : MonoBehaviour {
     private void Update()
     {
         spriteRenderer.color = myColor;
+        if(GetState()==Linestate.hide)
+            myColor = new Color(1, 1, 1, 0);
     }
 }
