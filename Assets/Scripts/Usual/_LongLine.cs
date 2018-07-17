@@ -41,16 +41,16 @@ public class _LongLine : MonoBehaviour {
 
     public void LongLineHide()
     {
+        bool flag = false;
         foreach(_Line line in vertical)
         {
-            if (line.GetState() == Linestate.show)          
-                return;                         
+            if (line.GetState() == Linestate.show)
+                flag = true;                        
         }
-        foreach(_Line l in parallel)
-        {
-            if (l.GetState() != Linestate.show)
-                return;
-        }
+
+        if (flag == false)
+            return;
+
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         foreach (_Line l in parallel)
         {
