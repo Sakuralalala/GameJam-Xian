@@ -7,12 +7,12 @@ using UnityEngine;
 public class SetOutterGlow : PostEffectsBase
 {
 
-    [SerializeField]
+    
     [Range(0, 10)]
-    private float factor = 1;
-    [SerializeField]
+    public float factor = 1;
+   
     [Range(0, 10)]
-    private float samplerRange = 7;
+    public float samplerRange = 7;
 
     public Shader outterGlowShader;
     private Material _material;
@@ -27,12 +27,14 @@ public class SetOutterGlow : PostEffectsBase
     private void Awake()
     {
         outterGlowShader = Shader.Find("Custom/OutterGlow");
+        
     }
     private void Update()
     {
         _Material.SetFloat("_Factor", factor);
         _Material.SetFloat("_SamplerRange", samplerRange);
         GetComponent<SpriteRenderer>().material = _Material;
+        GetComponent<SpriteRenderer>().sharedMaterial.renderQueue = 3000;
     }
 
 }

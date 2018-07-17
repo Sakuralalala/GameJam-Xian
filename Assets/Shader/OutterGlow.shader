@@ -9,9 +9,10 @@
 	}
 		SubShader{
 		Tags
-	{ "RenderType" = "Opaque"
+	{   "RenderType" = "Transparent"
+		"RenderType" = "Opaque"
 		"IgnoreProjector" = "True"
-		"RenderType" = "Transparent"
+		
 	}
 		LOD 200
 		Pass{
