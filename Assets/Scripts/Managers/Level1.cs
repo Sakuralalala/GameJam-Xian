@@ -87,7 +87,10 @@ public class Level1 : MonoBehaviour {
 
         //将下一步线条状态改为ready
         foreach (Transform line in steps[count + 1])
+        {
+            if (line.gameObject.GetComponent<_LongLine>() != null) continue;
             line.gameObject.GetComponent<_Line>().ChangeState(Linestate.ready);
+        }
 
         foreach(Transform l in longline)
         {
