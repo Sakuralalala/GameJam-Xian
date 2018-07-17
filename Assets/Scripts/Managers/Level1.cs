@@ -68,7 +68,6 @@ public class Level1 : MonoBehaviour {
         foreach (Transform line in steps[count])
         {
             line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
-            Debug.Log(line.gameObject.name + line.gameObject.GetComponent<BoxCollider2D>().enabled.ToString());
         }
 
         
@@ -96,8 +95,7 @@ public class Level1 : MonoBehaviour {
                 l.gameObject.GetComponent<_LongLine>().LongLineHide();
             else
                 l.gameObject.GetComponent<_LongLine>().LongLineShow();
-        }
-          
+        }        
     }
 
     private void failed(Transform trans)

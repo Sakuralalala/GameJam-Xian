@@ -18,9 +18,7 @@ public class _LongLine : MonoBehaviour {
 
     //当垂直的边被禁用时且所有组成该大边的小边均为show状态，大边激活
     public void LongLineShow()
-    {
-        if (gameObject.GetComponent<BoxCollider2D>().enabled == true)
-            return;     
+    {   
         foreach (_Line line in vertical)
         {
             if (line.GetState() == Linestate.show)
@@ -43,9 +41,6 @@ public class _LongLine : MonoBehaviour {
 
     public void LongLineHide()
     {
-        Debug.Log("lalla");
-        if (gameObject.GetComponent<BoxCollider2D>().enabled == false)
-            return;
         foreach(_Line line in vertical)
         {
             if (line.GetState() == Linestate.show)          
@@ -59,11 +54,15 @@ public class _LongLine : MonoBehaviour {
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         foreach (_Line l in parallel)
         {
-            Debug.Log(l.name);
             l.ChangeState(Linestate.show);
         }
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        Debug.Log("lla");
         gameObject.GetComponent<_Line>().ChangeState(Linestate.hide);
+    }
+
+    private void Update()
+    {
+        if (gameObject.GetComponent<_Line>().GetState() == Linestate.show && gameObject.GetComponent<BoxCollider2D>().enabled == false)
+            gameObject.GetComponent<_Line>().ChangeState(Linestate.hide);
     }
 }
