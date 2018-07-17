@@ -20,19 +20,19 @@ public class _LongLine : MonoBehaviour {
     public void LongLineShow()
     {
         if (gameObject.GetComponent<BoxCollider2D>().enabled == true)
-            return;
-
-        foreach(_Line line in vertical)
+            return;     
+        foreach (_Line line in vertical)
         {
             if (line.GetState() == Linestate.show)
                 return;
-        }
-        
+        }        
         foreach(_Line line in parallel)
         {
             if (line.GetState() != Linestate.show)
                 return;           
         }
+
+        Debug.Log("show"+gameObject.name);
 
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
@@ -44,19 +44,24 @@ public class _LongLine : MonoBehaviour {
     }
 
     public void LongLineHide()
-    {
+    {      
         if (gameObject.GetComponent<BoxCollider2D>().enabled == false)
             return;
         foreach(_Line line in vertical)
         {
-            if (line.GetState() == Linestate.show)
-            {
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                foreach(_Line l in parallel)
-                {
-                    l.ChangeState(Linestate.show);
-                }
-            }
+            if (line.GetState() == Linestate.show)          
+                return;                         
+        }
+        foreach(_Line l in parallel)
+        {
+            if (l.GetState() != Linestate.show)
+                return;
+        }
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        foreach (_Line l in parallel)
+        {
+            Debug.Log(l.name);
+            l.ChangeState(Linestate.show);
         }
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<_Line>().ChangeState(Linestate.hide);
