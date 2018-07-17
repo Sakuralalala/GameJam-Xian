@@ -34,8 +34,8 @@ public class SceneController2 : MonoBehaviour {
             //第二关的UI关闭
             level.transform.GetChild(1).gameObject.SetActive(false);
             //第三关的UI开启
-            //level.transform.GetChild(2).gameObject.SetActive(true);
-            //level.transform.GetChild(1).GetComponent<Level1>().isWin = false;
+            level.transform.GetChild(2).gameObject.SetActive(true);
+            level.transform.GetChild(1).GetComponent<Level1>().isWin = false;
         }
         //if (level.transform.GetChild(2).GetComponent<Level1>().isWin == true)
         //{
@@ -60,7 +60,7 @@ public class SceneController2 : MonoBehaviour {
     {
         level.transform.GetChild(0).GetComponent<Level1>().pigment = 4;
         level.transform.GetChild(1).GetComponent<Level1>().pigment = 5;
-        //level.transform.GetChild(2).GetComponent<Level1>().pigment = 3;
+        level.transform.GetChild(2).GetComponent<Level1>().pigment = 8;
         //level.transform.GetChild(3).GetComponent<Level1>().pigment = 2;        
     }
 }
