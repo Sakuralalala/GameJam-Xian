@@ -62,7 +62,10 @@ public class Level1 : MonoBehaviour {
 
         //将新增线条状态改为show
         foreach (Transform line in steps[count])
-            line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
+        {
+            if(line.gameObject.GetComponent<_LongLine>() == null)
+                line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
+        }
         
         //判断是否有环
         foreach (_Plane p in planes)
@@ -81,6 +84,7 @@ public class Level1 : MonoBehaviour {
 
         foreach(Transform l in longline)
         {
+            Debug.Log(l.gameObject.name + l.gameObject.GetComponent<BoxCollider2D>().enabled.ToString());
             bool flag = l.gameObject.GetComponent<BoxCollider2D>().enabled;
             if (flag)
                 l.gameObject.GetComponent<_LongLine>().LongLineHide();
