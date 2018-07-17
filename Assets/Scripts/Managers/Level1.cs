@@ -67,6 +67,7 @@ public class Level1 : MonoBehaviour {
         //将新增线条状态改为show
         foreach (Transform line in steps[count])
         {
+            if (line.gameObject.GetComponent<_LongLine>()!=null) continue;
             line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
         }
 
