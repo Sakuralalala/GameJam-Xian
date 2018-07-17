@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum Linestate{
     hide,
@@ -9,12 +10,15 @@ public enum Linestate{
     focus
 }
 
+
 public class _Line : MonoBehaviour {
 
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private Linestate state=Linestate.hide;
 
+    private bool isChange = false;
+    Color myColor;
 	// Use this for initialization
 	void Awake () {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -70,31 +74,48 @@ public class _Line : MonoBehaviour {
         BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
         if (state == Linestate.hide)
         {
-            spriteRenderer.color = new Color(1, 1, 1, 0);
+            //spriteRenderer.color = new Color(1, 1, 1, 0);
+            myColor = new Color(1, 1, 1, 0);
             collider.enabled = false;
         }
         if (state == Linestate.ready)
         {
-            spriteRenderer.color = Color.gray;
+            //spriteRenderer.color = Color.gray;
+            //spriteRenderer.color = new Color(1, 1, 1, 255);
+            myColor = new Color(1, 1, 1, 255);
             collider.enabled = false;
         }
         if (state == Linestate.show)
         {
-            spriteRenderer.color = Color.black;
+            isChange = true;
+            //spriteRenderer.color = Color.Lerp(new Color(1, 1, 1, 255), Color.black, 2.0f);
+            //spriteRenderer.color = Color.black;
+            Changing();
             collider.enabled = true;
         }
         if (state == Linestate.focus)
         {
-            spriteRenderer.color = Color.red;
+            //spriteRenderer.color = Color.red;
+            myColor = Color.red;
           
         }
           
-
-
     }
 
     public Linestate GetState()
     {
         return state;
+    }
+    private void Changing()
+    {
+        Sequence s = DOTween.Sequence();
+        myColor = new Color(1, 1, 1, 255);
+        s.Append(DOTween.To(() => myColor, x => myColor = x, Color.black, 1.5f));
+        isChange = false;
+    }
+
+    private void Update()
+    {
+        spriteRenderer.color = myColor;
     }
 }
