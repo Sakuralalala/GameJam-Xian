@@ -43,12 +43,12 @@ public class UIManager : MonoBehaviour
     public void GameOne()
     {
         //第一章
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadLevel(1));        
     }
     public void GameTwo()
     {
         //第二章
-        SceneManager.LoadScene(2);
+        StartCoroutine(LoadLevel(2));
     }
 
     // Use this for initialization
@@ -61,5 +61,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    IEnumerator LoadLevel(int i)
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(i);
     }
 }
