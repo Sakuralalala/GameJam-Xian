@@ -32,8 +32,6 @@ public class _LongLine : MonoBehaviour {
                 return;           
         }
 
-        Debug.Log("show"+gameObject.name);
-
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
 

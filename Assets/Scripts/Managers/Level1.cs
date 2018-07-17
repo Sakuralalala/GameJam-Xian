@@ -41,7 +41,7 @@ public class Level1 : MonoBehaviour {
             steps.Add(step4);
         if (step5.Length != 0)
             steps.Add(step5);
-
+        
         foreach(Transform trans in lines)
             trans.gameObject.GetComponent<_Line>().ChangeState(Linestate.hide);
 
@@ -54,15 +54,19 @@ public class Level1 : MonoBehaviour {
 
     public void NextStep()
     {
-        foreach(Transform line in lines)
+        foreach (Transform line in lines)
+        {
             if (line.gameObject.GetComponent<_Line>().GetState() == Linestate.focus)
+            {
                 line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
+            }
+        }
 
         count++;
 
         //将新增线条状态改为show
         foreach (Transform line in steps[count])
-        {
+        {         
             if(line.gameObject.GetComponent<_LongLine>() == null)
                 line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
         }
@@ -84,7 +88,6 @@ public class Level1 : MonoBehaviour {
 
         foreach(Transform l in longline)
         {
-            Debug.Log(l.gameObject.name + l.gameObject.GetComponent<BoxCollider2D>().enabled.ToString());
             bool flag = l.gameObject.GetComponent<BoxCollider2D>().enabled;
             if (flag)
                 l.gameObject.GetComponent<_LongLine>().LongLineHide();
