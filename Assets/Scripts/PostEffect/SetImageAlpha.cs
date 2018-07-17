@@ -43,6 +43,7 @@ public class SetImageAlpha : PostEffectsBase
         //变量的计算只是为了映射范围
         //GetComponent<Sprite>().material = _Material;
         GetComponent<SpriteRenderer>().material = _Material;
+        GetComponent<SpriteRenderer>().sharedMaterial.renderQueue = 3000;
     }
 
 }
