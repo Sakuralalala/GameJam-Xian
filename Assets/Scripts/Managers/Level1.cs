@@ -19,6 +19,8 @@ public class Level1 : MonoBehaviour {
     Transform[] step4;
     [SerializeField]
     Transform[] step5;
+    
+    public bool isWin = false;
 
     //记录当前第几步
     private int count = -1;
@@ -47,7 +49,7 @@ public class Level1 : MonoBehaviour {
 
         planes = father.gameObject.GetComponentsInChildren<_Plane>();
 
-        SetPigment(pigment);
+        //SetPigment(pigment);
 
         NextStep();
     }
@@ -55,7 +57,7 @@ public class Level1 : MonoBehaviour {
     public void NextStep()
     {
         foreach(Transform line in lines)
-            if (line.gameObject.GetComponent<_Line>().GetState() == Linestate.focus)
+            if (line !=null &&line.gameObject.GetComponent<_Line>().GetState() == Linestate.focus)
                 line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
 
         count++;
@@ -75,6 +77,10 @@ public class Level1 : MonoBehaviour {
         if (count == steps.Count - 1)
         {
             Debug.Log("you win!");
+            //过关
+            isWin = true;
+
+
             return;
         }
 
@@ -100,8 +106,8 @@ public class Level1 : MonoBehaviour {
         Debug.Log(trans.gameObject.name + "is a circle");
     }
 
-    public void SetPigment(int value)
-    {
-        _Line.pigment = value;
-    }
+    //public void SetPigment(int value)
+    //{
+    //    pigment = value;
+    //}
 }

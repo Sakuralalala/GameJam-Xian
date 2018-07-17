@@ -11,7 +11,7 @@ public class _Click : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        value.text = _Line.pigment.ToString();
+        //value.text = _Line.pigment.ToString();
 	}
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class _Click : MonoBehaviour {
             {
                 if (hit.collider.gameObject.GetComponent<_Line>() != null)
                     hit.collider.gameObject.GetComponent<_Line>().IsClicked();
-                value.text = _Line.pigment.ToString();
+                //value.text = _Line.pigment.ToString();
             }
         }
     }
