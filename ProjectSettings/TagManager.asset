@@ -4,7 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Wall
+=======
+  - Point
+  - Line
+  - Plane
+>>>>>>> 516bae66becb5f9fb2c92fa1130210c9dc9c6bde
   layers:
   - Default
   - TransparentFX
