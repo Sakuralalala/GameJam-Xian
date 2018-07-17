@@ -121,5 +121,7 @@ public class _Line : MonoBehaviour {
         spriteRenderer.color = myColor;
         if(GetState()==Linestate.hide)
             myColor = new Color(1, 1, 1, 0);
+        if (GetState() == Linestate.focus)
+            myColor = Color.red;
     }
 }
