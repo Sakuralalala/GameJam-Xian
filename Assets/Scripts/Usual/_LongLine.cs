@@ -42,7 +42,8 @@ public class _LongLine : MonoBehaviour {
     }
 
     public void LongLineHide()
-    {      
+    {
+        Debug.Log("lalla");
         if (gameObject.GetComponent<BoxCollider2D>().enabled == false)
             return;
         foreach(_Line line in vertical)
@@ -62,6 +63,7 @@ public class _LongLine : MonoBehaviour {
             l.ChangeState(Linestate.show);
         }
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        Debug.Log("lla");
         gameObject.GetComponent<_Line>().ChangeState(Linestate.hide);
     }
 }

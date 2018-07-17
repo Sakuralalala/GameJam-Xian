@@ -14,7 +14,6 @@ public class _Line : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private Linestate state=Linestate.hide;
-    public static int pigment;
 
 	// Use this for initialization
 	void Awake () {
@@ -40,9 +39,9 @@ public class _Line : MonoBehaviour {
         }
         if (state == Linestate.focus)
         {
-            if(_Line.pigment>=1)
+            if(transform.parent.transform.parent.GetComponent<Level1>().pigment>=1)
             {
-                _Line.pigment--;
+                transform.parent.transform.parent.GetComponent<Level1>().pigment--;
                 ChangeState(Linestate.hide);
                 gameObject.SetActive(false);
                 _LongLine[] longlines = transform.parent.gameObject.GetComponentsInChildren<_LongLine>();
