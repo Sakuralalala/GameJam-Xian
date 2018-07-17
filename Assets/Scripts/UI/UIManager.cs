@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
     public void GameTwo()
     {
         //第二章
-        //SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2);
     }
 
     // Use this for initialization

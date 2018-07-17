@@ -47,6 +47,12 @@ public class SceneController : MonoBehaviour {
             level.transform.GetChild(3).gameObject.SetActive(true);
             level.transform.GetChild(2).GetComponent<Level1>().isWin = false;
         }
+        if(level.transform.GetChild(3).GetComponent<Level1>().isWin == true)
+        {
+            level.transform.GetChild(3).gameObject.SetActive(false);
+            GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveWin();
+            level.transform.GetChild(3).GetComponent<Level1>().isWin = false;
+        }
     }
 
     private void Update()
