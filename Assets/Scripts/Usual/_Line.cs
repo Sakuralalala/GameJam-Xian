@@ -84,7 +84,12 @@ public class _Line : MonoBehaviour {
             collider.enabled = true;
         }
         if (state == Linestate.focus)
+        {
             spriteRenderer.color = Color.red;
+          
+        }
+          
+
 
     }
 
