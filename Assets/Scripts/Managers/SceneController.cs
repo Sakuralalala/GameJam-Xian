@@ -27,7 +27,7 @@ public class SceneController : MonoBehaviour {
             //第一关的UI关闭
             StartCoroutine(hideCanvas(0));
             //第二关的UI开启
-            level.transform.GetChild(1).gameObject.SetActive(true);
+ //           level.transform.GetChild(1).gameObject.SetActive(true);
             level.transform.GetChild(0).GetComponent<Level1>().isWin = false;
         }
         if (level.transform.GetChild(1).GetComponent<Level1>().isWin == true)
@@ -36,7 +36,7 @@ public class SceneController : MonoBehaviour {
             //第二关的UI关闭
             StartCoroutine(hideCanvas(1));
             //第三关的UI开启
-            level.transform.GetChild(2).gameObject.SetActive(true);
+ //           level.transform.GetChild(2).gameObject.SetActive(true);
             level.transform.GetChild(1).GetComponent<Level1>().isWin = false;
         }
         if (level.transform.GetChild(2).GetComponent<Level1>().isWin == true)
@@ -45,7 +45,7 @@ public class SceneController : MonoBehaviour {
             //第三关的UI关闭
             StartCoroutine(hideCanvas(2));
             //第四关的UI开启
-            level.transform.GetChild(3).gameObject.SetActive(true);
+ //           level.transform.GetChild(3).gameObject.SetActive(true);
             level.transform.GetChild(2).GetComponent<Level1>().isWin = false;
         }
         if(level.transform.GetChild(3).GetComponent<Level1>().isWin == true)
@@ -78,6 +78,8 @@ public class SceneController : MonoBehaviour {
     {
         yield return new WaitForSeconds(2f);
         level.transform.GetChild(i).gameObject.SetActive(false);
+        if (i < 3)
+            level.transform.GetChild(i + 1).gameObject.SetActive(true);
     }
 
     IEnumerator nextLevel()

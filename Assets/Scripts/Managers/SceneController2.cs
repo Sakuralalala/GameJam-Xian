@@ -24,8 +24,6 @@ public class SceneController2 : MonoBehaviour {
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
             //第一关的UI关闭
             StartCoroutine(hideCanvas(0));
-            //第二关的UI开启
-            level.transform.GetChild(1).gameObject.SetActive(true);
             level.transform.GetChild(0).GetComponent<Level1>().isWin = false;
         }
         if (level.transform.GetChild(1).GetComponent<Level1>().isWin == true)
@@ -33,15 +31,13 @@ public class SceneController2 : MonoBehaviour {
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
             //第二关的UI关闭
             StartCoroutine(hideCanvas(1));
-            //第三关的UI开启
-            level.transform.GetChild(2).gameObject.SetActive(true);
             level.transform.GetChild(1).GetComponent<Level1>().isWin = false;
         }
         if (level.transform.GetChild(2).GetComponent<Level1>().isWin == true)
         {
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveWin();
             //第三关的UI关闭
-            level.transform.GetChild(2).gameObject.SetActive(false);
+            StartCoroutine(hideCanvas(2));
             level.transform.GetChild(2).GetComponent<Level1>().isWin = false;
         }
     }
@@ -66,6 +62,8 @@ public class SceneController2 : MonoBehaviour {
     {
         yield return new WaitForSeconds(2f);
         level.transform.GetChild(i).gameObject.SetActive(false);
+        if (i < 2)
+            level.transform.GetChild(i + 1).gameObject.SetActive(true);
     }
         
 }

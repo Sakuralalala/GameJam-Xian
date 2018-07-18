@@ -40,9 +40,7 @@ public class CameraMove : MonoBehaviour {
     /// </summary>
     public void MoveRight()
     {
-        target = transform.position + new Vector3(moveDis, 0, 0);
-        Sequence s = DOTween.Sequence();
-        s.Append(DOTween.To(() => myTarget, x => myTarget = x, target, 2.0f)).SetEase(Ease.OutQuad);
+        StartCoroutine(moveRightWait());
     }
     /// <summary>
     /// 相机左移函数
@@ -58,6 +56,21 @@ public class CameraMove : MonoBehaviour {
     /// </summary>
     public void MoveWin()
     {
+        StartCoroutine(moveWinWait());
+    }
+
+    IEnumerator moveRightWait()
+    {
+        yield return new WaitForSeconds(0.8f);
+        target = transform.position + new Vector3(moveDis, 0, 0);
+        Sequence s = DOTween.Sequence();
+        s.Append(DOTween.To(() => myTarget, x => myTarget = x, target, 2.0f)).SetEase(Ease.OutQuad);
+    }
+
+    IEnumerator moveWinWait()
+    {
+        yield return new WaitForSeconds(0.8f);
+
         Vector3 nowPos = transform.position;
         Vector3 startPos = new Vector3(0, 0, -10);
         Sequence s = DOTween.Sequence();
@@ -66,14 +79,9 @@ public class CameraMove : MonoBehaviour {
         s.Append(DOTween.To(() => myTarget, x => myTarget = x, startPos, 0.5f)).SetEase(Ease.OutQuad);
         //缓慢移动到终点
         s.Insert(0.5f, DOTween.To(() => myTarget, x => myTarget = x, nowPos, 15.0f)).SetEase(Ease.Linear);
-        
+
         //s2.Insert(0.5f,DOTween.To(() => i, x => i =x, 1, 15.0f)).SetEase(Ease.Linear);
         s2.Insert(0.5f, DOTween.To(() => i, x => i = x, 1, 13.0f));
         //s.Insert(0.5f, DOTween.To(() => myTarget, x => myTarget = x, nowPos, 10.0f));
-    }
-
-    IEnumerator moveWait()
-    {
-        yield return new WaitForSeconds(0.8f);
     }
 }
