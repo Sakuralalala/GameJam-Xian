@@ -30,8 +30,12 @@ public class Level1 : MonoBehaviour {
     private _Plane[] planes;
     public int pigment;
 
+    private GameObject defeat;
+
+
     // Use this for initialization
     void Start () {
+        defeat = GameObject.Find("MainCanvas").transform.GetChild(0).gameObject;
 
         if (step1.Length != 0)
             steps.Add(step1);  
@@ -80,10 +84,17 @@ public class Level1 : MonoBehaviour {
         //如果是最后一步，没有ready状态的线条
         if (count == steps.Count - 1)
         {
-            Debug.Log("you win!");
-            //过关
-            isWin = true;
-            return;
+            if (defeat.activeSelf == false)
+            {
+                //过关
+                isWin = true;
+                return;
+            }
+
+            if (defeat.activeSelf == true)
+            {
+                count--;
+            }
         }
 
         //将下一步线条状态改为ready
@@ -106,6 +117,6 @@ public class Level1 : MonoBehaviour {
     private void failed(Transform trans)
     {
         if (trans == null) return;
-        Debug.Log(trans.gameObject.name + "is a circle");
+        defeat.SetActive(true);
     }
 }

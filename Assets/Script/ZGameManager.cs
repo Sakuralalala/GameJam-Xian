@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ZGameManager : MonoBehaviour {
@@ -23,6 +24,10 @@ public class ZGameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        allLines = new List<GameObject>();
+
+        addLines = new List<GameObject>();
+        step = 0;
         addLine = 2;
         currentRemoveLine = 5;
         removeLine = 1;
@@ -126,18 +131,18 @@ public class ZGameManager : MonoBehaviour {
             g.GetComponent<SpriteRenderer>().enabled = false;
         }
         defeat.gameObject.SetActive(true);
-        defeatYear.text = step.ToString();
+        defeatYear.text = step.ToString() + "年";
 
     }
 
     public void Quit()
     {
-
+        SceneManager.LoadScene(0);
     }
 
     public void Again()
     {
-
+        SceneManager.LoadScene(3);
     }
 
     //button下一步
@@ -157,11 +162,11 @@ public class ZGameManager : MonoBehaviour {
             adl.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
             adl.GetComponent<Collider2D>().enabled = true;
             adl.GetComponent<ZLine>().enabled = true;
-            if (IsCircle())
-            {
-                Defeat();
-            }
-            else if (ZMapManager.instance.AddLine(adl.GetComponent<ZLine>()))
+            //if (IsCircle())
+            //{
+            //    Defeat();
+            //}
+            /*else*/ if (ZMapManager.instance.AddLine(adl.GetComponent<ZLine>()))
             {
                 Defeat();
             }
