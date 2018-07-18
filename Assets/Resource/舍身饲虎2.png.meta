@@ -1,11 +1,16 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: d799510c4f4eec845baedb148adf8009
 timeCreated: 1531877453
 =======
 guid: a4a7a91856ec0da4f8292a725f81e70c
 timeCreated: 1531875899
 >>>>>>> 295a81b7f6aeae6ea9a14ada5990d8ab201cc8cf
+=======
+guid: a4a7a91856ec0da4f8292a725f81e70c
+timeCreated: 1531875899
+>>>>>>> 8c858b41cf224f522d1e330833b160a18fd7b4b5
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -72,7 +77,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Standalone
+  - buildTarget: Android
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
