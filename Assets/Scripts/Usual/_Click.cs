@@ -8,6 +8,12 @@ public class _Click : MonoBehaviour {
     private bool IsAct = false;
     [SerializeField]
     Text value;
+    //擦除音效
+    [SerializeField]
+    private AudioClip erase;
+    //裂痕音效
+    [SerializeField]
+    private AudioClip crack;
 
 	// Use this for initialization
 	void Start () {
@@ -28,5 +34,15 @@ public class _Click : MonoBehaviour {
                     hit.collider.gameObject.GetComponent<_Line>().IsClicked();
             }
         }
+    }
+
+
+    public void PlayErase()
+    {
+        AudioSource.PlayClipAtPoint(erase, transform.position);
+    }
+    public void PlayCrack()
+    {
+        AudioSource.PlayClipAtPoint(crack, transform.position);
     }
 }

@@ -71,6 +71,7 @@ public class Level1 : MonoBehaviour {
             line.gameObject.GetComponent<_Line>().ChangeState(Linestate.show);
         }
 
+        Camera.main.GetComponent<_Click>().PlayCrack();
         
         //判断是否有环
         foreach (_Plane p in planes)

@@ -23,7 +23,7 @@ public class SceneController2 : MonoBehaviour {
             //控制ui的改变
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
             //第一关的UI关闭
-            level.transform.GetChild(0).gameObject.SetActive(false);
+            StartCoroutine(hideCanvas(0));
             //第二关的UI开启
             level.transform.GetChild(1).gameObject.SetActive(true);
             level.transform.GetChild(0).GetComponent<Level1>().isWin = false;
@@ -32,20 +32,18 @@ public class SceneController2 : MonoBehaviour {
         {
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
             //第二关的UI关闭
-            level.transform.GetChild(1).gameObject.SetActive(false);
+            StartCoroutine(hideCanvas(1));
             //第三关的UI开启
             level.transform.GetChild(2).gameObject.SetActive(true);
             level.transform.GetChild(1).GetComponent<Level1>().isWin = false;
         }
-        //if (level.transform.GetChild(2).GetComponent<Level1>().isWin == true)
-        //{
-        //    GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
-        //    //第三关的UI关闭
-        //    level.transform.GetChild(2).gameObject.SetActive(false);
-        //    //第四关的UI开启
-        //    level.transform.GetChild(3).gameObject.SetActive(true);
-        //    level.transform.GetChild(2).GetComponent<Level1>().isWin = false;
-        //}
+        if (level.transform.GetChild(2).GetComponent<Level1>().isWin == true)
+        {
+            GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveWin();
+            //第三关的UI关闭
+            level.transform.GetChild(2).gameObject.SetActive(false);
+            level.transform.GetChild(2).GetComponent<Level1>().isWin = false;
+        }
     }
 
     private void Update()
@@ -63,4 +61,11 @@ public class SceneController2 : MonoBehaviour {
         level.transform.GetChild(2).GetComponent<Level1>().pigment = 8;
         //level.transform.GetChild(3).GetComponent<Level1>().pigment = 2;        
     }
+    
+    IEnumerator hideCanvas(int i)
+    {
+        yield return new WaitForSeconds(2f);
+        level.transform.GetChild(i).gameObject.SetActive(false);
+    }
+        
 }

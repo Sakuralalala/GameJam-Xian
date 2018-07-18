@@ -9745,6 +9745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: {fileID: 1910547867}
+  erase: {fileID: 8300000, guid: 86beea87cbad5ee429cdbb0cce2059dd, type: 3}
+  crack: {fileID: 8300000, guid: ee12668b0ad77044d927badb92322f13, type: 3}
 --- !u!114 &1857857359
 MonoBehaviour:
   m_ObjectHideFlags: 0
