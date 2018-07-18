@@ -24,6 +24,7 @@ public class _Plane : MonoBehaviour {
             if(line.GetState()!=Linestate.show)
                 return null;
         }
+        Debug.Log(this.gameObject.name);
         return gameObject.transform;
     }
 }

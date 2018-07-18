@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneController2 : MonoBehaviour {
 
@@ -39,6 +40,7 @@ public class SceneController2 : MonoBehaviour {
             //第三关的UI关闭
             StartCoroutine(hideCanvas(2));
             level.transform.GetChild(2).GetComponent<Level1>().isWin = false;
+            StartCoroutine(backToStart());
         }
     }
 
@@ -64,6 +66,12 @@ public class SceneController2 : MonoBehaviour {
         level.transform.GetChild(i).gameObject.SetActive(false);
         if (i < 2)
             level.transform.GetChild(i + 1).gameObject.SetActive(true);
+    }
+
+    IEnumerator backToStart()
+    {
+        yield return new WaitForSeconds(15f);
+        SceneManager.LoadScene(0);
     }
         
 }
