@@ -9,8 +9,8 @@ public class _Plane : MonoBehaviour {
 
     private void Start()
     {
-        _Plane[] allPlanes=transform.parent.GetComponentsInChildren<_Plane>();
-        foreach(_Plane plane in allPlanes)
+        _Plane[] allPlanes = transform.parent.GetComponentsInChildren<_Plane>();
+        foreach (_Plane plane in allPlanes)
         {
             if (gameObject.name == plane.gameObject.name)
                 children.Add(plane);
@@ -19,12 +19,20 @@ public class _Plane : MonoBehaviour {
 
     public Transform Check()
     {
-        foreach(_Line line in lines)
+        foreach (_Line line in lines)
         {
-            if(line.GetState()!=Linestate.show)
+            if (line.GetState() != Linestate.show)
                 return null;
         }
-        Debug.Log(this.gameObject.name);
         return gameObject.transform;
+    }
+
+    private void Update()
+    {
+        if (Check() != null)
+        {
+            GameObject defeat= defeat = GameObject.Find("MainCanvas").transform.GetChild(0).gameObject;
+            defeat.SetActive(true);
+        }
     }
 }
