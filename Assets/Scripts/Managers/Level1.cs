@@ -94,6 +94,7 @@ public class Level1 : MonoBehaviour {
             if (defeat.activeSelf == true)
             {
                 count--;
+                return;
             }
         }
 

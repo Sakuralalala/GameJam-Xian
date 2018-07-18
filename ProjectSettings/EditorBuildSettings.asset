@@ -17,3 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestZe.unity
     guid: 1b2d2961454088d479a3b7b632dcc272
+  m_configObjects: {}
