@@ -48,6 +48,7 @@ public class _Line : MonoBehaviour {
                 transform.parent.transform.parent.GetComponent<Level1>().pigment--;
                 ChangeState(Linestate.hide);
                 gameObject.SetActive(false);
+                Camera.main.GetComponent<_Click>().PlayErase();
                 _LongLine[] longlines = transform.parent.gameObject.GetComponentsInChildren<_LongLine>();
                 foreach(_LongLine l in longlines)
                 {

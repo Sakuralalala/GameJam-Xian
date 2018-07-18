@@ -70,6 +70,10 @@ public class CameraMove : MonoBehaviour {
         //s2.Insert(0.5f,DOTween.To(() => i, x => i =x, 1, 15.0f)).SetEase(Ease.Linear);
         s2.Insert(0.5f, DOTween.To(() => i, x => i = x, 1, 13.0f));
         //s.Insert(0.5f, DOTween.To(() => myTarget, x => myTarget = x, nowPos, 10.0f));
+    }
 
+    IEnumerator moveWait()
+    {
+        yield return new WaitForSeconds(0.8f);
     }
 }

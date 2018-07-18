@@ -8463,7 +8463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1308930749
 Transform:
   m_ObjectHideFlags: 0
@@ -9872,6 +9872,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: {fileID: 0}
+  erase: {fileID: 8300000, guid: 86beea87cbad5ee429cdbb0cce2059dd, type: 3}
+  crack: {fileID: 8300000, guid: ee12668b0ad77044d927badb92322f13, type: 3}
 --- !u!114 &1642447131
 MonoBehaviour:
   m_ObjectHideFlags: 0

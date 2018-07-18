@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
 
@@ -24,7 +25,7 @@ public class SceneController : MonoBehaviour {
             //控制ui的改变
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
             //第一关的UI关闭
-            level.transform.GetChild(0).gameObject.SetActive(false);
+            StartCoroutine(hideCanvas(0));
             //第二关的UI开启
             level.transform.GetChild(1).gameObject.SetActive(true);
             level.transform.GetChild(0).GetComponent<Level1>().isWin = false;
@@ -33,7 +34,7 @@ public class SceneController : MonoBehaviour {
         {
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
             //第二关的UI关闭
-            level.transform.GetChild(1).gameObject.SetActive(false);
+            StartCoroutine(hideCanvas(1));
             //第三关的UI开启
             level.transform.GetChild(2).gameObject.SetActive(true);
             level.transform.GetChild(1).GetComponent<Level1>().isWin = false;
@@ -42,16 +43,17 @@ public class SceneController : MonoBehaviour {
         {
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveRight();
             //第三关的UI关闭
-            level.transform.GetChild(2).gameObject.SetActive(false);
+            StartCoroutine(hideCanvas(2));
             //第四关的UI开启
             level.transform.GetChild(3).gameObject.SetActive(true);
             level.transform.GetChild(2).GetComponent<Level1>().isWin = false;
         }
         if(level.transform.GetChild(3).GetComponent<Level1>().isWin == true)
         {
-            level.transform.GetChild(3).gameObject.SetActive(false);
+            StartCoroutine(hideCanvas(3));
             GameObject.Find("Main Camera").GetComponent<CameraMove>().MoveWin();
             level.transform.GetChild(3).GetComponent<Level1>().isWin = false;
+            StartCoroutine(nextLevel());
         }
     }
 
@@ -70,7 +72,17 @@ public class SceneController : MonoBehaviour {
         level.transform.GetChild(2).GetComponent<Level1>().pigment = 3;
         level.transform.GetChild(3).GetComponent<Level1>().pigment = 2;
         //level.transform.GetChild(4).GetComponent<Level1>().pigment = 4;
+    }
 
+    IEnumerator hideCanvas(int i)
+    {
+        yield return new WaitForSeconds(2f);
+        level.transform.GetChild(i).gameObject.SetActive(false);
+    }
 
+    IEnumerator nextLevel()
+    {
+        yield return new WaitForSeconds(15f);
+        SceneManager.LoadScene(2);
     }
 }
