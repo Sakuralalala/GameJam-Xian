@@ -13,6 +13,8 @@ public class BgMove : MonoBehaviour {
     {
         target = new Vector3(transform.position.x - moveDis,transform.position.y,transform.position.z);
         transform.DOMove(target, 2f);
+        
+        
     }
 
     public void BackToStart()

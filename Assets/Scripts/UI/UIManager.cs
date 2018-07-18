@@ -13,6 +13,11 @@ public class UIManager : MonoBehaviour
 
         GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(false);
         GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
+
+        GameObject.Find("Title1").gameObject.SetActive(false);
+        GameObject.Find("Title2").gameObject.SetActive(false);
+        GameObject.Find("Title3").gameObject.SetActive(false);
+        GameObject.Find("Title4").gameObject.SetActive(false);
     }
     public void GameIntroduce()
     {
