@@ -33,7 +33,7 @@ public class CameraMove : MonoBehaviour {
     private void LateUpdate()
     {
         transform.position = myTarget;
-    //    GameObject.Find("BackGroundOld").GetComponent<SetImageAlpha>().leftX = i;
+        GameObject.Find("BackGroundOld").GetComponent<SetImageAlpha>().leftX = i;
     }
     /// <summary>
     /// 相机右移函数

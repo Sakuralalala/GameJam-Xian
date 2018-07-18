@@ -37,8 +37,9 @@ public class UIManager : MonoBehaviour
     }
     public void HardMode()
     {
-        GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(false);
+        //GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(false);
         //进入hard模式
+        StartCoroutine(LoadLevel(3));
     }
     public void GameOne()
     {
