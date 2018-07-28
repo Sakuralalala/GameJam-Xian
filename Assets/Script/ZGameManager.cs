@@ -70,23 +70,24 @@ public class ZGameManager : MonoBehaviour {
 	
     void OnClick(ZLine line)
     {
-        List<ZLine> l = ZMapManager.instance.GetBigLine(line);
+        List<ZLine> bgl = new List<ZLine>();
+        bgl = ZMapManager.instance.GetBigLine(line);
         bool isDelete = false;
-        foreach(ZLine zl in ZLine.lines)
+        foreach(ZLine allL in ZLine.lines)
         {
-            if (l.Contains(zl))
+            if (bgl.Contains(allL))
                 continue;
-            zl.isChoose = false;
-            zl.isUse = false;
+            allL.isChoose = false;
+            allL.isUse = false;
         }
-        foreach(ZLine zl in l)
+        foreach(ZLine zl in bgl)
         {
             if(zl.isChoose && currentRemoveLine > 0)
             {
                 zl.Destroy();
                 isDelete = true;
             }
-            else
+            else if(!zl.isChoose)
             {
                 zl.isChoose = true;
             }
@@ -97,6 +98,7 @@ public class ZGameManager : MonoBehaviour {
             currentRemoveLine--;
             ClipController.clips.OnErase();
         }
+        //print(ZLine.lines.Count);
     }
 
     // Update is called once per frame
@@ -157,16 +159,22 @@ public class ZGameManager : MonoBehaviour {
         step++;
         year.text = step.ToString();
         currentRemoveLine += removeLine;
-        foreach(GameObject adl in addLines)
+
+        foreach (GameObject adl in addLines)
         {
             adl.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
             adl.GetComponent<Collider2D>().enabled = true;
             adl.GetComponent<ZLine>().enabled = true;
+        }
+
+        foreach (GameObject adl in addLines)
+        {
             //if (IsCircle())
             //{
             //    Defeat();
             //}
-            /*else*/ if (ZMapManager.instance.AddLine(adl.GetComponent<ZLine>()))
+            /*else*/
+            if (ZMapManager.instance.AddLine(adl.GetComponent<ZLine>()))
             {
                 Defeat();
             }
@@ -183,6 +191,7 @@ public class ZGameManager : MonoBehaviour {
                 allLines[r].GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
             }
         }
+        //print(ZLine.lines.Count);
     }
 
     bool IsCircle()

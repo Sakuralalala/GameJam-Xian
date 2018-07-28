@@ -6,14 +6,15 @@ public class ZLine : MonoBehaviour {
 
     public bool isChoose;
     public bool isDestroy;
-    //寻路用
+
+    //寻路或找大边用
     public bool isUse;
 
     public static List<ZLine> lines = new List<ZLine>();
     public List<ZPoint> points;
 
     // Use this for initialization
-    void Start () {
+    void OnEnable () {
         lines.Add(this);
         isChoose = false;
         isDestroy = false;
