@@ -9,8 +9,6 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("开始游戏");
-
         GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(false);
         GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
 
@@ -44,7 +42,7 @@ public class UIManager : MonoBehaviour
     {
         //GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(false);
         //进入hard模式
-        StartCoroutine(LoadLevel(3));
+        SceneManager.LoadScene(3);
     }
     public void GameOne()
     {
